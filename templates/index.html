@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Comparer</title>
+</head>
+<body>
+    <textarea id="text1" rows="10" cols="50"></textarea>
+    <textarea id="text2" rows="10" cols="50"></textarea>
+    <button onclick="compare()">Check Now</button>
+    <button onclick="clearHighlights()">Clear Highlights</button>
+    <div id="result"></div>
+
+    <script>
+        function compare() {
+            let text1 = document.getElementById('text1').value;
+            let text2 = document.getElementById('text2').value;
+
+            fetch('/compare', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({text1: text1, text2: text2})
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerHTML = data.result.join('<br>');
+            });
+        }
+
+        function clearHighlights() {
+            document.getElementById('result').innerHTML = '';
+        }
+    </script>
+</body>
+</html>
