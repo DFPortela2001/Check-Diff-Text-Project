@@ -13,9 +13,3 @@ This is a simple web application that compares text from two input fields and hi
 - Python 3.x
 - Flask
 
-## Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/text-comparer.git
-   cd text-comparer
